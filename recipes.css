@@ -1,4 +1,18 @@
+html{
+	font-family: "Roboto";
+	text-align: center;
+	background-color: #D4CCDC;
+	color: #FFFFFF;
+}
+
 h3{
 	font-family: "Sacramento";
 	font-size: 40px;
+}
+
+p{
+
+}
+span{
+	font-size: 20px;
 }
