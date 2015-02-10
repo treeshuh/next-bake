@@ -1,2 +1,2 @@
 # next-bake
-next bake recipe
+next bake website
