@@ -1,8 +1,7 @@
 html{
 	font-family: "Roboto";
 	text-align: center;
-	background-color: #8463A6
-;
+	background-color: #8463A6;
 	color: #FFFFFF;
 }
 
@@ -17,4 +16,73 @@ p{
 
 span{
 	font-size: 20px;
+}
+
+img{
+	max-height: 500px;
+	max-width: 500px;
+}
+
+#wrap{
+	width: 100%;
+	height: 50px;
+	margin: 0;
+	z-index: 99;
+	position: relative;
+	background-color: #FF99CC;
+}
+
+.navbar{
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+}
+
+.navbar li{
+	height: auto;
+	width: 145px;
+	float: left;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.navbar a{
+	padding: 15px 0;
+	border-left: 1px solid #FFA3D1;
+	border-right: 1px solid #E68AB8;
+	text-decoration: none;
+	color: #FFFFFF;
+	display: block;
+}
+
+ .navbar li:hover, a:hover{
+ 	background-color: #FFADD6;
+}
+
+.navbar li ul{
+	display: none; 
+	height: auto;									
+	margin: 0; 
+	padding: 0; 			
+}				
+
+.navbar li:hover ul{
+	display: block; /* Displays the drop-down box when the menu item is hovered over */
+}
+
+ .navbar li ul li{
+ 	background-color: #FFADD6;
+} 
+
+.navbar li ul li a{
+	border-left: 1px solid #FFA3D1; 
+	border-right: 1px solid #FFA3D1; 
+	border-top: 1px solid #FFA3D1; 
+	border-bottom: 1px solid #FFB8DB; 
+}
+				
+.navbar li ul li a:hover{
+	background-color: #FFC2E0;
 }
