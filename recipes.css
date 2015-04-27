@@ -1,17 +1,25 @@
 html{
 	font-family: "Roboto";
 	text-align: center;
-	background-color: #8463A6;
-	color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 
+h1{
+	font-family: "Sacramento";
+	font-size: 100px;
+	margin-bottom: 0px;
+	color: #BC8DBF;
+
+}
 h3{
 	font-family: "Sacramento";
-	font-size: 40px;
+	font-size: 60px;
+	margin-bottom: 0px;
+	color: #BC8DBF;
+
 }
 
 p{
-
 }
 
 span{
@@ -29,7 +37,7 @@ img{
 	margin: 0;
 	z-index: 99;
 	position: relative;
-	background-color: #FF99CC;
+	background-color: #BC8DBF;
 }
 
 .navbar{
@@ -73,7 +81,7 @@ img{
 }
 
  .navbar li ul li{
- 	background-color: #FFADD6;
+ 	background-color: #F49AC2;
 } 
 
 .navbar li ul li a{
