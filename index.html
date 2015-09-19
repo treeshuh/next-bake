@@ -6,7 +6,6 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="recipes.css"/>
 	<script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js'></script>
-		<script src='http://pagerjs.com/demo/pager.min.js'></script>
 	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 </head>
 <body>
@@ -78,26 +77,80 @@
 			</li>
 	</div>
 	<div class="container">
-		<div data-bind="page: {id: 'home'}">
-			hilol
-		</div>
-		<div data-bind="page: {id: 'old'}">
+		<div data-bind="if: !recipeId()">
 			<h1> Next Bake </h1>
 			<p> Providing Next House with the tastiest noms around! </p>
 			<p> Explore our past recipes (menu above)</p>
 		</div>
+		<div data-bind="if: recipeId()">
+			<h3 data-bind="text: recipe().displayName">Title</h3>  <!-- GIRAFFE: Title -->
+
+			<p><span>Time: </span>2 hr</p>	<!-- GIRAFFE: Time -->
+			<p><span>Yields: </span>2 loaves</p> <!-- GIRAFFE: Yield -->
+
+			<p><span>Recipe Link: </span><a href = "http://allrecipes.com/recipe/apple-bread-2/">Apple Bread</a></p>	<!-- GIRAFFE: link -->
+
+			<img src = "Apple Bread.JPG"/> <!-- GIRAFFE: Image -->
+
+			<p><span>Special Ingredients:</span></p>	<!-- GIRAFFE: Special Ingredients -->
+
+			<input type = "checkbox">1 cup chopped walnuts (OPTIONAL)<br>
+			<input type = "checkbox">3 cups apples<br>
+			<input type = "checkbox">1 cup vegetable oil<br>
+			<input type = "checkbox">3 eggs<br>
+
+
+			<p><span>Notes:</span></p>
+			<ul>	<!-- GIRAFFE: Notes -->
+
+			</ul>
+		</div>
 	</div>
 </body>
 <script>
-var vm = function(){
-    
+$(document).on('ready', function(){
+	var vm = function(){
+		var me = this;
+		var fb = new Firebase("https://next-bake.firebaseio.com/");
+		var location = ko.observable(window.location.search);
+		var recipeId = ko.computed(function(){
+			return getQueryVariable('id')
+		});
+
+		this.recipeObj = ko.observable({});
+
+		var recipe = ko.computed(function(){
+			if (!recipeId()){
+				me.recipeObj({})
+			return
+			}
+			fb.child('recipes').child(recipeId()).once('value', function(data) {
+				me.recipeObj(data.val())
+			});
+		});
+
+	function getQueryVariable(variable){
+       var query = location().substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+	}
+
     return{
+    	location: location,
+    	recipeId: recipeId,
+    	recipe: recipeObj
     };
 
-}
-pager.extendWithPage(vm());
-ko.applyBindings(vm());
-pager.start('home');
+	}
+
+	ko.applyBindings(vm());
+
+})
+
 
 </script>
 </html>
