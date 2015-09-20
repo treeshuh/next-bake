@@ -1,284 +1,448 @@
-"recipes": [
-	{"apple-bread": [
-		{"classification":"bread",
+{"recipes": {
+	"apple-bread": {
+		"classification":"bread",
 		"displayName":"Apple Bread",
-		"imageLink":"file:///C:/Users/Xuan/Desktop/next-bake/Apple%20Bread.JPG",
+		"imageLink":"Apple%20Bread.JPG",
 		"recipeLink":"http://allrecipes.com/recipe/apple-bread-2/",
-		"specialIngredients": [
-			{"apple": [
-				{"displayName":"Apples",
-				"optional":"false",
+		"specialIngredients": {
+			"apple": {
+				"displayName":"Apples",
+				"optional": false,
 				"quantity":"3 cups"
-				}
-			]},
-			{"eggs": [
-				{"displayName":"Eggs",
-				"optional":"false",
+			},
+			"eggs": {
+				"displayName":"Eggs",
+				"optional": false,
 				"quantity":"3"
-				}
-			]},
-			{"oil": [
-				{"displayName":"Vegetable Oil",
-				"optional":"false",
+			},
+			"oil": {
+				"displayName":"Vegetable Oil",
+				"optional": false,
 				"quantity":"1 cup"
-				}
-			]},
-			{"walnuts": [
-				{"displayName":"Chopped Walnuts",
-				"optional":"true",
+			},
+			"walnuts": {
+				"displayName":"Chopped Walnuts",
+				"optional": true,
 				"quantity":"1 cup"
-				}
-			]}
-		],
-		"time":"2 hours",
-		"yields":"2 loaves",
+				}	
 		},
-	]},
-	{"apple-pie": [
-		{"classification":"pie",
+		"time":"2 hours",
+		"yields":"2 loaves"
+	},
+	"apple-pie": {
+		"classification":"pie",
 		"displayName":"Apple Pie",
 		"imageLink":"http://images.media-allrecipes.com/userphotos/250x250/00/73/62/736203.jpg",
 		"recipeLink":"http://allrecipes.com/recipe/apple-pie-by-grandma-ople/detail.aspx",
-		"specialIngredients": [
-			{"butter": [
-				{"displayName":"Unsalted Butter",
-				"optional":"false",
+		"specialIngredients": {
+			"butter": {
+				"displayName":"Unsalted Butter",
+				"optional": false,
 				"quantity":"1 stick"
-				}
-			]},
-			{"apples": [
-				{"displayName":"Granny Smith Apples",
-				"optional":"false",
+			},
+			"apples": {
+				"displayName":"Granny Smith Apples",
+				"optional": false,
 				"quantity":"8"
-				}
-			]}
-		],
-		"time":"1 hour 30 minutes",
-		"yields":"1 9-inch pie",
+			}
 		},
-	]},
-	{"apple-tart": [
-		{"classification":"tart",
+		"time":"1 hour 30 minutes",
+		"yields":"1 9-inch pie"
+	},
+	"apple-tart": {
+		"classification":"tart",
 		"displayName":"Apple Tart",
 		"imageLink":"http://cf2.primecp.com/images/article_images_v2/60734/Five-Star-Apple-Tart-OR--1--.jpg",
 		"recipeLink":"http://www.mrfood.com/Fruit-Recipes/Five-Star-Apple-Tart",
-		"specialIngredients": [
-			{"apples": [
-				{"displayName":"Apples",
-				"optional":"false",
+		"specialIngredients": {
+			"apples": {
+				"displayName":"Apples",
+				"optional": false,
 				"quantity":"6 medium"
-				}
-			]},
-			{"pie-crusts": [
-				{"displayName":"Refrigerated Rolled Pie Crusts",
-				"optional":"false",
+			},
+			"pie-crusts": {
+				"displayName":"Refrigerated Rolled Pie Crusts",
+				"optional": false,
 				"quantity":"1 15-oz. pkg."
-				}
-			]}
-		],
-		"time":">50 minutes",
-		"yields":"8 servings",
+			}
 		},
-	]},
-	{"banana-cream-crunch-pie": [
-		{"classification":"pie",
+		"time":">50 minutes",
+		"yields":"8 servings"
+	},
+	"banana-cream-crunch-pie": {
+		"classification":"pie",
 		"displayName":"*Banana Cream Crunch Pie",
 		"imageLink":"http://content0.tastebook.com/content/photo/user_photo/Or71oqQc13c2836393834343fgVZzKUv_1382342761.jpg",
 		"recipeLink":"http://www.mrfood.com/Pie/Banana-Cream-Crunch-Pie",
-		"specialIngredients": [
-			{"pudding": [
-				{"displayName":"Banana Cream-Flavored Instant Pudding Mix",
-				"optional":"false",
+		"specialIngredients": {
+			"pudding": {
+				"displayName":"Banana Cream-Flavored Instant Pudding Mix",
+				"optional": false,
 				"quantity":"1 4-serving pkg."
-				}
-			]},
-			{"milk": [
-				{"displayName":"Milk",
-				"optional":"false",
+			},
+			"milk": {
+				"displayName":"Milk",
+				"optional": false,
 				"quantity":"1 cup"
-				}
-			]},
-			{"coffee-liquer": [
-				{"displayName":"Coffee Liquer",
-				"optional":"false",
+			},
+			"coffee-liquer": {
+				"displayName":"Coffee Liquer",
+				"optional": false,
 				"quantity":"5 Tbsp"
-				}
-			]},
-			{"whipped-topping": [
-				{"displayName":"Frozen Whipped Topping",
-				"optional":"false",
+			},
+			"whipped-topping": {
+				"displayName":"Frozen Whipped Topping",
+				"optional": false,
 				"quantity":"1 8-oz. container"
-				}
-			]},
-			{"bananas": [
-				{"displayName":"Bananas",
-				"optional":"false",
+			},
+			"bananas": {
+				"displayName":"Bananas",
+				"optional": false,
 				"quantity":"2"
-				}
-			]},
-			{"pie-crusts": [
-				{"displayName":"Chocolate Ready-to-Use Graham Cracker Pie Crust",
-				"optional":"false",
+			},
+			"pie-crusts": {
+				"displayName":"Chocolate Ready-to-Use Graham Cracker Pie Crust",
+				"optional": false,
 				"quantity":"1 9-in."
-				}
-			]},
-			{"toffee-candy-bars": [
-				{"displayName":"Toffee Candy Bars",
-				"optional":"false",
+			},
+			"toffee-candy-bars": {
+				"displayName":"Toffee Candy Bars",
+				"optional": false,
 				"quantity":"3 1.4-oz"
-				}
-			]}
-		],
-		"time":">1 hour 30 minutes",
-		"yields":"6 servings",
+			}
 		},
-	]},
-	{"braided-lemon-bread": [
-		{"classification":"bread",
+		"time":">1 hour 30 minutes",
+		"yields":"6 servings"
+	},
+	"braided-lemon-bread": {
+		"classification":"bread",
 		"displayName":"Braided Lemon Bread",
 		"imageLink":"http://farm5.static.flickr.com/4061/4602493397_08450b1ba8.jpg",
 		"recipeLink":"http://smittenkitchen.com/blog/2010/05/braided-lemon-bread/",
-		"specialIngredients": [
-			{"yeast": [
+		"specialIngredients": {
+			"yeast": 
 				{"displayName":"Instant Yeast",
-				"optional":"false",
+				"optional": false,
 				"quantity":"1 1/2 tsp"
-				}
-			]},
-			{"sour-cream-or-yogurt": [
+			},
+			"sour-cream-or-yogurt": 
 				{"displayName":"Sour Cream/Yogurt",
-				"optional":"false",
+				"optional": false,
 				"quantity":"6 Tbsp (3 oz)"
-				}
-			]},
-			{"sour-cream": [
+				},
+			"sour-cream": 
 				{"displayName":"Sour Cream",
-				"optional":"false",
+				"optional": false,
 				"quantity":"2 Tbsp"
-				}
-			]},
-			{"butter": [
+				},
+			"butter": 
 				{"displayName":"Unsalted Butter",
-				"optional":"false",
+				"optional": false,
 				"quantity":"4 Tbsp"
-				}
-			]},
-			{"eggs": [
+				},
+			"eggs": 
 				{"displayName":"Large Eggs",
-				"optional":"false",
+				"optional": false,
 				"quantity":"2"
-				}
-			]},
-			{"cream-cheese": [
+				},
+			"cream-cheese": 
 				{"displayName":"Cream Cheese",
-				"optional":"false",
+				"optional": false,
 				"quantity":"1 1/3 cup (2 1/2 oz)"
-				}
-			]},
-			{"lemon-juice": [
+				},
+			"lemon-juice": 
 				{"displayName":"Fresh Lemon Juice",
-				"optional":"false",
+				"optional": false,
 				"quantity":"1 tsp"
-				}
-			]},
-			{"lemon-curd": [
+				},
+			"lemon-curd": 
 				{"displayName":"Lemon Curd",
-				"optional":"false",
+				"optional": false,
 				"quantity":"1/4 cup (2 oz)"
 				}
-			]}
-		],
-		"time":"3 hours",
-		"yields":"1 loaf",
 		},
-	]},
-	{"Cheesecake": [
-		{"classification":"cake/cupcake",
+		"time":"3 hours",
+		"yields":"1 loaf"
+	},
+	"cheesecake": {
+		"classification":"cake/cupcake",
 		"displayName":"Cheesecake",
 		"imageLink":"http://assets.kraftfoods.com/recipe_images/Philly-3-Step-Cheesecake-1522.jpg",
 		"recipeLink":"http://www.kraftrecipes.com/recipes/philadelphia-3-step-cheesecake-51208.aspx",
-		"specialIngredients": [
-			{"cream-cheese": [
+		"specialIngredients": {
+			"cream-cheese": 
 				{"displayName":"Cream Cheese",
-				"optional":"false",
+				"optional": false,
 				"quantity":"2 pkg."
-				}
-			]},
-			{"eggs": [
+				},
+			"eggs": 
 				{"displayName":"Eggs",
-				"optional":"false",
+				"optional": false,
 				"quantity":"2"
-				}
-			]},
-			{"crust": [
+				},
+			"crust": 
 				{"displayName":"Ready-to-Use Graham Cracker Crumb Crust",
-				"optional":"false",
+				"optional": false,
 				"quantity":"1"
 				}
-			]}
-		],
-		"time":"4 hours 2 minutes",
-		"yields":"8 servings",
 		},
-	]},
-	{"chocolate-cake": [
-		{"classification":"cake/cupcake",
+		"time":"4 hours 2 minutes",
+		"yields":"8 servings"
+	},
+	"chocolate-cake": {
+		"classification":"cake/cupcake",
 		"displayName":"Chocolate Cake",
 		"imageLink":"https://www.hersheys.com/Recipes/Images/Detail/184_en-us_large.jpg",
 		"recipeLink":"https://www.hersheys.com/recipes/recipe-details.aspx?id=184&name=HERSHEY%27S-PERFECTLY-CHOCOLATE-Chocolate-Cake",
-		"specialIngredients": [
-			{"cocoa": [
+		"specialIngredients": {
+			"cocoa": 
 				{"displayName":"Cocoa",
-				"optional":"false",
+				"optional": false,
 				"quantity":"3/4 cup"
-				}
-			]},
-			{"eggs": [
+				},
+			"eggs": 
 				{"displayName":"Eggs",
-				"optional":"false",
+				"optional": false,
 				"quantity":"2"
-				}
-			]},
-			{"milk": [
+				},
+			"milk": 
 				{"displayName":"Milk",
-				"optional":"false",
+				"optional": false,
 				"quantity":"1 cup"
-				}
-			]},
-			{"oil": [
+				},
+			"oil": 
 				{"displayName":"Vegetable Oil",
-				"optional":"false",
+				"optional": false,
 				"quantity":"1/2 cup"
 				}
-			]}
-		],
+		},
 		"time":"1 hour",
 		"yields":"12 servings",
-		"notes":"IN PROGRESS"
+		"notes": {
+			"0": "This cake is super moist and not too chocolate-y.",
+			"1": "(Optional) Add chocolate chips after stirring in the boiling water.",
+			"2": "Use 3/8 cup regular cocoa powder and 3/8 cup Swiss Miss chocolate cocoa mix."
+		}
+	},
+	"chocolate-cream-pie": {
+		"classification":"pie",
+		"displayName":"*Chocolate Cream Pie",
+		"imageLink":"http://cf2.primecp.com/images/article_images_v2/72721/Chocolate-Cream-Pie-OR.jpg",
+		"recipeLink":"http://www.mrfood.com/Pie/Chocolate-Cream-Pie-2094/",
+		"specialIngredients": {
+			"shell": {
+				"displayName":"9-inch frozen ready-to-bake deep-dish pie shell",
+				"optional": false,
+				"quantity":"1"
+			},
+			"pudding": {
+				"displayName":"4-serving-size pkg. instant chocolate pudding & pie filling",
+				"optional": false,
+				"quantity":"1"
+			},
+			"milk": {
+				"displayName": "Milk",
+				"optional": false,
+				"quantity": "1 3/4 cup"
+			},
+			"gelatin": {
+				"displayName": "Unflavored gelatin",
+				"optional": false,
+				"quantity": "1 (0.25oz) envelope"
+			},
+			"cream": {
+				"displayName": "Heavy cream",
+				"optional": false,
+				"quantity": "1 cup"
+			}
 		},
-	]},
-	/*{"name": [
-		{"classification":"",
-		"displayName":"",
-		"imageLink":"",
-		"recipeLink":"",
-		"specialIngredients": [
-			{"type": [
-				{"displayName":"",
-				"optional":"false",
-				"quantity":""
-				}
-			]},
-			{"type": [
-				{"displayName":"",
-				"optional":"false",
-				"quantity":""
-				}
-			]}
-		],
-		"time":"",
-		"yields":"",
-		"notes":""
+		"time":"2 hour",
+		"yields":"1 9-inch pie"
+	},
+	"chocolate-cupcakes": {
+		"classification":"cake/cupcake",
+		"displayName":"Chocolate Cupcakes",
+		"imageLink":"http://images.media-allrecipes.com/userphotos/250x250/00/24/55/245571.jpg",
+		"recipeLink":"http://allrecipes.com/recipe/chocolate-cupcakes/",
+		"specialIngredients": {
+			"cocoa": {
+				"displayName":"Unsweetened cocoa powder",
+				"optional": false,
+				"quantity":"3/4 cup"
+			},
+			"butter": {
+				"displayName":"Butter",
+				"optional": false,
+				"quantity":"3 Tbsp"
+			},
+			"eggs": {
+				"displayName":"Eggs",
+				"optional": false,
+				"quantity":"2"
+			},
+			"milk": {
+				"displayName":"Milk",
+				"optional": false,
+				"quantity":"1 cup"
+			}
 		},
-	]},*/
-]
+		"time":"30 minutes",
+		"yields":"16 cupcakes",
+		"notes": {
+			"0": "Cupcakes had flat tops."
+		}
+	},
+	"graham-cracker-crust": {
+		"classification":"pie",
+		"displayName":"Graham Cracker Crust",
+		"imageLink":"http://cf2.primecp.com/images/article_images_v2/73256/Graham-Cracker-Pie-Crust-OR.jpg",
+		"recipeLink":"http://www.mrfood.com/Pie/Homemade-Graham-Cracker-Pie-Crust",
+		"specialIngredients": {
+			"graham-cracker": {
+				"displayName":"Graham cracker crumbs",
+				"optional": false,
+				"quantity":"1 1/3 cup"
+			},
+			"butter": {
+				"displayName":"Butter",
+				"optional": false,
+				"quantity":"1/2 cup"
+			}
+		},
+		"time":"10 minutes",
+		"yields":"1 9-minute pie crust",
+		"notes": {
+			"0": "This usually uses more butter."
+		}
+	},
+	"key-lime-pie": {
+		"classification":"pie",
+		"displayName":"Key Lime Pie",
+		"imageLink":"http://15456d13098a54773ea9-bcf1ad37ada5be7227d2e6a4c20928bc.r8.cf2.rackcdn.com/i/pies/profile/keylime_main1.jpg",
+		"recipeLink":"http://www.mrfood.com/Pie/Easy-Key-Lime-Pie-2216",
+		"specialIngredients": {
+			"graham-cracker-crust": {
+				"displayName":"9-inch Graham cracker pie crust",
+				"optional": false,
+				"quantity":"1"
+			},
+			"egg": {
+				"displayName":"Egg yolks",
+				"optional": false,
+				"quantity":"3"
+			},
+			"lime-peel": {
+				"displayName":"Grated lime peel",
+				"optional": false,
+				"quantity":"1 1/2 tsp"
+			},
+			"condensed-milk": {
+				"displayName":"Sweetened condensed milk",
+				"optional": false,
+				"quantity":"1 (14-oz) can"
+			},
+			"lime-juice": {
+				"displayName":"Key lime juice",
+				"optional": false,
+				"quantity":"2/3 cup"
+			}
+		},
+		"time":"2 hours 10 minutes",
+		"yields":"1 9-minute pie"
+	},
+	"lemon-curd": {
+		"classification":"other",
+		"displayName":"Lemon Curd",
+		"imageLink":"http://kitchenconfidante.com/wp-content/uploads/2011/08/Lemon-Curd-3-of-3-689x720.jpg",
+		"recipeLink":"http://smittenkitchen.com/blog/2010/05/braided-lemon-bread/",
+		"specialIngredients": {
+			"lemon-juice": {
+				"displayName":"Fresh lemon juice",
+				"optional": false,
+				"quantity":"3 Tbsp"
+			},
+			"lemon-zest": {
+				"displayName":"Lemon zest",
+				"optional": false,
+				"quantity":"3/4 tsp"
+			},
+			"egg": {
+				"displayName":"Large egg",
+				"optional": false,
+				"quantity":"1"
+			},
+			"butter": {
+				"displayName":"Unsalted butter",
+				"optional": false,
+				"quantity":"2 Tbsp"
+			}
+		},
+		"time":">1 hour",
+		"yields":"1/2 cups"
+	},
+	"monkey-bread": {
+		"classification":"bread",
+		"displayName":"Monkey Bread",
+		"imageLink":"Monkey%20Bread.JPG",
+		"recipeLink":"http://www.pillsbury.com/recipes/grands-monkey-bread/7a1e41b1-4708-4028-8ce6-fcb5baebbc19",
+		"specialIngredients": {
+			"biscuits": {
+				"displayName":"Pillsbury Grands! Homestyle refrigerated buttermilk biscuits",
+				"optional": false,
+				"quantity":"2 cans"
+			},
+			"butter": {
+				"displayName":"Butter or margarine",
+				"optional": false,
+				"quantity":"3/4 cups"
+			},
+			"walnuts": {
+				"displayName":"Chopped walnuts (optional)",
+				"optional": true,
+				"quantity":"1/2 cup"
+			},
+			"raisins": {
+				"displayName":"Raisins",
+				"optional": true,
+				"quantity":"1/2 cup"
+			}
+		},
+		"time":"1 hour 5 min",
+		"yields":"12 servings"
+	},
+	"oreo-cream-pie": {
+		"classification":"pie",
+		"displayName":"Oreo Cream Pie",
+		"imageLink":"http://assets.kraftfoods.com/recipe_images/OREO_Cream_Pie.jpg",
+		"recipeLink":"http://www.kraftrecipes.com/recipes/oreo-cream-pie-55859.aspx",
+		"specialIngredients": {
+			"oreos": {
+				"displayName":"Oreo cookies",
+				"optional": false,
+				"quantity":"36"
+			},
+			"butter": {
+				"displayName":"Butter or margarine",
+				"optional": false,
+				"quantity":"1/4 cups"
+			},
+			"pudding": {
+				"displayName":"Jell-o Vanilla Flavor Instant Pudding",
+				"optional": false,
+				"quantity":"2 package (3.4oz each)"
+			},
+			"milk": {
+				"displayName":"Milk",
+				"optional": false,
+				"quantity":"1 1/2 cup"
+			},
+			"whipped-topping": {
+				"displayName":"Cool Whip Whipped Topping",
+				"optional": false,
+				"quantity":"1 tub (8oz)"
+			}
+		},
+		"time":"4 hour 15 min",
+		"yields":"10 servings"
+	}
+}}
