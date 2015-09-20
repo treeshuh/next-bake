@@ -76,6 +76,8 @@
 				</ul>
 			</li>
 	</div>
+
+	<!-- Navigation to recipes by query -->
 	<div class="container">
 		<div data-bind="if: !recipeId()">
 			<h1> Next Bake </h1>
@@ -83,30 +85,31 @@
 			<p> Explore our past recipes (menu above)</p>
 		</div>
 		<div data-bind="if: recipeId()">
-			<h3 data-bind="text: recipe().displayName">Title</h3>  <!-- GIRAFFE: Title -->
+			<h3 data-bind="text: recipe().displayName">Title</h3>
 
-			<p><span>Time: </span>2 hr</p>	<!-- GIRAFFE: Time -->
-			<p><span>Yields: </span>2 loaves</p> <!-- GIRAFFE: Yield -->
+			<p><span>Time: </span><!--ko text: recipe().time-->Time<!--/ko--></p>
+			
+			<p><span>Yields: </span><!--ko text: recipe().yields-->Yield<!--/ko--></p>
 
-			<p><span>Recipe Link: </span><a href = "http://allrecipes.com/recipe/apple-bread-2/">Apple Bread</a></p>	<!-- GIRAFFE: link -->
+			<p><span>Recipe Link: </span><a data-bind="attr: {href: recipe().recipeLink}"><!--ko text: recipe().displayName-->Recipe Name<!--/ko--></a></p>
 
-			<img src = "Apple Bread.JPG"/> <!-- GIRAFFE: Image -->
+			<img data-bind="attr: {src: recipe().imageLink}"/>
 
-			<p><span>Special Ingredients:</span></p>	<!-- GIRAFFE: Special Ingredients -->
+			<p><span data-bind="visible: specialIngredients().length > 0">Special Ingredients:</span></p>
+			<div data-bind="foreach: specialIngredients()">
+				<input type = "checkbox"></input><label data-bind="text: $data.quantity"></label>&nbsp<label data-bind="text: $data.displayName"></label><br>
+			</div>
 
-			<input type = "checkbox">1 cup chopped walnuts (OPTIONAL)<br>
-			<input type = "checkbox">3 cups apples<br>
-			<input type = "checkbox">1 cup vegetable oil<br>
-			<input type = "checkbox">3 eggs<br>
-
-
-			<p><span>Notes:</span></p>
-			<ul>	<!-- GIRAFFE: Notes -->
-
+			<p><span data-bind="visible: notes().length > 0">Notes:</span></p>
+			<ul>
+				<div data-bind="foreach: notes()">
+					<li data-bind="text: $data"></li>
+				</div>
 			</ul>
 		</div>
 	</div>
 </body>
+
 <script>
 $(document).on('ready', function(){
 	var vm = function(){
@@ -122,11 +125,37 @@ $(document).on('ready', function(){
 		var recipe = ko.computed(function(){
 			if (!recipeId()){
 				me.recipeObj({})
-			return
+				return
 			}
 			fb.child('recipes').child(recipeId()).once('value', function(data) {
 				me.recipeObj(data.val())
 			});
+		});
+
+		var specialIngredients = ko.computed(function(){
+			if(!recipeObj().specialIngredients) {
+				return []
+			}
+			ingredients = []
+			keys = Object.keys(recipeObj().specialIngredients);
+			for(var i=0; i < keys.length; i++){
+				ingredient = recipeObj().specialIngredients[keys[i]];
+				ingredients.push(ingredient);
+			}
+			return ingredients
+		});
+
+		var notes = ko.computed(function(){
+			if(!recipeObj().notes) {
+				return []
+			}
+			allNotes = []
+			keys = Object.keys(recipeObj().notes);
+			for(var i=0; i < keys.length; i++){
+				note = recipeObj().notes[keys[i]];
+				allNotes.push(note);
+			}
+			return allNotes
 		});
 
 	function getQueryVariable(variable){
@@ -142,15 +171,14 @@ $(document).on('ready', function(){
     return{
     	location: location,
     	recipeId: recipeId,
-    	recipe: recipeObj
+    	recipe: recipeObj,
+    	specialIngredients: specialIngredients,
+    	notes: notes
     };
 
 	}
 
 	ko.applyBindings(vm());
-
 })
-
-
 </script>
 </html>
