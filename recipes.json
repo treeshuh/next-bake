@@ -1,0 +1,284 @@
+"recipes": [
+	{"apple-bread": [
+		{"classification":"bread",
+		"displayName":"Apple Bread",
+		"imageLink":"file:///C:/Users/Xuan/Desktop/next-bake/Apple%20Bread.JPG",
+		"recipeLink":"http://allrecipes.com/recipe/apple-bread-2/",
+		"specialIngredients": [
+			{"apple": [
+				{"displayName":"Apples",
+				"optional":"false",
+				"quantity":"3 cups"
+				}
+			]},
+			{"eggs": [
+				{"displayName":"Eggs",
+				"optional":"false",
+				"quantity":"3"
+				}
+			]},
+			{"oil": [
+				{"displayName":"Vegetable Oil",
+				"optional":"false",
+				"quantity":"1 cup"
+				}
+			]},
+			{"walnuts": [
+				{"displayName":"Chopped Walnuts",
+				"optional":"true",
+				"quantity":"1 cup"
+				}
+			]}
+		],
+		"time":"2 hours",
+		"yields":"2 loaves",
+		},
+	]},
+	{"apple-pie": [
+		{"classification":"pie",
+		"displayName":"Apple Pie",
+		"imageLink":"http://images.media-allrecipes.com/userphotos/250x250/00/73/62/736203.jpg",
+		"recipeLink":"http://allrecipes.com/recipe/apple-pie-by-grandma-ople/detail.aspx",
+		"specialIngredients": [
+			{"butter": [
+				{"displayName":"Unsalted Butter",
+				"optional":"false",
+				"quantity":"1 stick"
+				}
+			]},
+			{"apples": [
+				{"displayName":"Granny Smith Apples",
+				"optional":"false",
+				"quantity":"8"
+				}
+			]}
+		],
+		"time":"1 hour 30 minutes",
+		"yields":"1 9-inch pie",
+		},
+	]},
+	{"apple-tart": [
+		{"classification":"tart",
+		"displayName":"Apple Tart",
+		"imageLink":"http://cf2.primecp.com/images/article_images_v2/60734/Five-Star-Apple-Tart-OR--1--.jpg",
+		"recipeLink":"http://www.mrfood.com/Fruit-Recipes/Five-Star-Apple-Tart",
+		"specialIngredients": [
+			{"apples": [
+				{"displayName":"Apples",
+				"optional":"false",
+				"quantity":"6 medium"
+				}
+			]},
+			{"pie-crusts": [
+				{"displayName":"Refrigerated Rolled Pie Crusts",
+				"optional":"false",
+				"quantity":"1 15-oz. pkg."
+				}
+			]}
+		],
+		"time":">50 minutes",
+		"yields":"8 servings",
+		},
+	]},
+	{"banana-cream-crunch-pie": [
+		{"classification":"pie",
+		"displayName":"*Banana Cream Crunch Pie",
+		"imageLink":"http://content0.tastebook.com/content/photo/user_photo/Or71oqQc13c2836393834343fgVZzKUv_1382342761.jpg",
+		"recipeLink":"http://www.mrfood.com/Pie/Banana-Cream-Crunch-Pie",
+		"specialIngredients": [
+			{"pudding": [
+				{"displayName":"Banana Cream-Flavored Instant Pudding Mix",
+				"optional":"false",
+				"quantity":"1 4-serving pkg."
+				}
+			]},
+			{"milk": [
+				{"displayName":"Milk",
+				"optional":"false",
+				"quantity":"1 cup"
+				}
+			]},
+			{"coffee-liquer": [
+				{"displayName":"Coffee Liquer",
+				"optional":"false",
+				"quantity":"5 Tbsp"
+				}
+			]},
+			{"whipped-topping": [
+				{"displayName":"Frozen Whipped Topping",
+				"optional":"false",
+				"quantity":"1 8-oz. container"
+				}
+			]},
+			{"bananas": [
+				{"displayName":"Bananas",
+				"optional":"false",
+				"quantity":"2"
+				}
+			]},
+			{"pie-crusts": [
+				{"displayName":"Chocolate Ready-to-Use Graham Cracker Pie Crust",
+				"optional":"false",
+				"quantity":"1 9-in."
+				}
+			]},
+			{"toffee-candy-bars": [
+				{"displayName":"Toffee Candy Bars",
+				"optional":"false",
+				"quantity":"3 1.4-oz"
+				}
+			]}
+		],
+		"time":">1 hour 30 minutes",
+		"yields":"6 servings",
+		},
+	]},
+	{"braided-lemon-bread": [
+		{"classification":"bread",
+		"displayName":"Braided Lemon Bread",
+		"imageLink":"http://farm5.static.flickr.com/4061/4602493397_08450b1ba8.jpg",
+		"recipeLink":"http://smittenkitchen.com/blog/2010/05/braided-lemon-bread/",
+		"specialIngredients": [
+			{"yeast": [
+				{"displayName":"Instant Yeast",
+				"optional":"false",
+				"quantity":"1 1/2 tsp"
+				}
+			]},
+			{"sour-cream-or-yogurt": [
+				{"displayName":"Sour Cream/Yogurt",
+				"optional":"false",
+				"quantity":"6 Tbsp (3 oz)"
+				}
+			]},
+			{"sour-cream": [
+				{"displayName":"Sour Cream",
+				"optional":"false",
+				"quantity":"2 Tbsp"
+				}
+			]},
+			{"butter": [
+				{"displayName":"Unsalted Butter",
+				"optional":"false",
+				"quantity":"4 Tbsp"
+				}
+			]},
+			{"eggs": [
+				{"displayName":"Large Eggs",
+				"optional":"false",
+				"quantity":"2"
+				}
+			]},
+			{"cream-cheese": [
+				{"displayName":"Cream Cheese",
+				"optional":"false",
+				"quantity":"1 1/3 cup (2 1/2 oz)"
+				}
+			]},
+			{"lemon-juice": [
+				{"displayName":"Fresh Lemon Juice",
+				"optional":"false",
+				"quantity":"1 tsp"
+				}
+			]},
+			{"lemon-curd": [
+				{"displayName":"Lemon Curd",
+				"optional":"false",
+				"quantity":"1/4 cup (2 oz)"
+				}
+			]}
+		],
+		"time":"3 hours",
+		"yields":"1 loaf",
+		},
+	]},
+	{"Cheesecake": [
+		{"classification":"cake/cupcake",
+		"displayName":"Cheesecake",
+		"imageLink":"http://assets.kraftfoods.com/recipe_images/Philly-3-Step-Cheesecake-1522.jpg",
+		"recipeLink":"http://www.kraftrecipes.com/recipes/philadelphia-3-step-cheesecake-51208.aspx",
+		"specialIngredients": [
+			{"cream-cheese": [
+				{"displayName":"Cream Cheese",
+				"optional":"false",
+				"quantity":"2 pkg."
+				}
+			]},
+			{"eggs": [
+				{"displayName":"Eggs",
+				"optional":"false",
+				"quantity":"2"
+				}
+			]},
+			{"crust": [
+				{"displayName":"Ready-to-Use Graham Cracker Crumb Crust",
+				"optional":"false",
+				"quantity":"1"
+				}
+			]}
+		],
+		"time":"4 hours 2 minutes",
+		"yields":"8 servings",
+		},
+	]},
+	{"chocolate-cake": [
+		{"classification":"cake/cupcake",
+		"displayName":"Chocolate Cake",
+		"imageLink":"https://www.hersheys.com/Recipes/Images/Detail/184_en-us_large.jpg",
+		"recipeLink":"https://www.hersheys.com/recipes/recipe-details.aspx?id=184&name=HERSHEY%27S-PERFECTLY-CHOCOLATE-Chocolate-Cake",
+		"specialIngredients": [
+			{"cocoa": [
+				{"displayName":"Cocoa",
+				"optional":"false",
+				"quantity":"3/4 cup"
+				}
+			]},
+			{"eggs": [
+				{"displayName":"Eggs",
+				"optional":"false",
+				"quantity":"2"
+				}
+			]},
+			{"milk": [
+				{"displayName":"Milk",
+				"optional":"false",
+				"quantity":"1 cup"
+				}
+			]},
+			{"oil": [
+				{"displayName":"Vegetable Oil",
+				"optional":"false",
+				"quantity":"1/2 cup"
+				}
+			]}
+		],
+		"time":"1 hour",
+		"yields":"12 servings",
+		"notes":"IN PROGRESS"
+		},
+	]},
+	/*{"name": [
+		{"classification":"",
+		"displayName":"",
+		"imageLink":"",
+		"recipeLink":"",
+		"specialIngredients": [
+			{"type": [
+				{"displayName":"",
+				"optional":"false",
+				"quantity":""
+				}
+			]},
+			{"type": [
+				{"displayName":"",
+				"optional":"false",
+				"quantity":""
+				}
+			]}
+		],
+		"time":"",
+		"yields":"",
+		"notes":""
+		},
+	]},*/
+]
