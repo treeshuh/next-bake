@@ -112,14 +112,12 @@ $(document).on('ready', function(){
 				currKey = keys[i]; // e.g. breads
 				currClassifications = classifications[currKey]; //another object with types of breads
 				classKeys = Object.keys(currClassifications);
-				navString += "<li>" + currKey + "<ul>";
-				console.log(navString)
+				navString += "<li><a href = #>" + currKey + "</a><ul>";
 				for(var j = 0; j< classKeys.length; j++) {
 					navString += "<li><a href='" + urlbase + classKeys[j] + "'>" + currClassifications[classKeys[j]] + "</a></li>"; 
 				}
 				navString += "</ul></li>";
 			}
-			console.log(navString)
 			$('.navbar').append(navString);
 
 		});
