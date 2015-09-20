@@ -26,6 +26,10 @@ span{
 	font-size: 20px;
 }
 
+ul {
+    list-style-position: inside;
+}
+
 img{
 	max-height: 500px;
 	max-width: 500px;
