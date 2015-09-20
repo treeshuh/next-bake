@@ -58,10 +58,11 @@ img{
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	color: #FFFFFF;
 }
 
 .navbar a{
-	padding: 15px 0;
+	padding: 15px;
 	border-left: 1px solid #FFA3D1;
 	border-right: 1px solid #E68AB8;
 	text-decoration: none;

@@ -11,70 +11,8 @@
 <body>
 	<div id = "wrap">
 		<ul class = "navbar">
-			<li><a href = "Home Page.html">Home</a></li>
-
-			<li><a href = #>Breads</a>
-				<ul> 
-					<li><a href = "Apple Bread.html">Apple Bread</a></li>
-					<li><a href = "Braided Lemon Bread.html">Braided Lemon Bread</a></li>
-					<li><a href = "Monkey Bread.html">Monkey Bread</a></li>
-					<li><a href = "Triple Berry Cinnamon Swirl Bread.html">Triple Berry Cinnamon Swirl Bread</a></li>
-				</ul>
-			</li>
-
-			<li><a href = #>Cakes/Cupcakes</a>
-				<ul> 
-					<li><a href = "Cheesecake.html">Cheesecake</a></li>
-					<li><a href = "Chocolate Cake.html">Chocolate Cake</a></li>
-					<li><a href = "Chocolate Cupcakes.html">Chocolate Cupcakes</a></li>
-					<li><a href = "Vanilla Cupcakes.html">Vanilla Cupcakes</a></li>
-				</ul>
-			</li>
-
-			<li><a href = #>Cookies</a>
-				<ul> 
-					<li><a href = "Cookies and Cream Cookies.html">Cookies and Cream Cookies</a></li>
-					<li><a href = "Salted Brown Butter Pecan Cookies.html">Salted Brown Butter Pecan Cookies</a></li>
-				</ul>
-			</li>
-
-			<li><a href = #>Frosting</a>
-				<ul> 
-					<li><a href = "Vanilla Buttercream Frosting.html">Vanilla Buttercream Frosting</a></li>
-				</ul>
-			</li>
-
-			<li><a href = #>Pancakes</a>
-				<ul> 
-					<li><a href = "Oreo Pancakes.html">Oreo Pancakes</a></li>
-				</ul>
-			</li>
-
-			<li><a href = #>Pies</a>
-				<ul> 
-					<li><a href = "Apple Pie.html">Apple Pie</a></li>
-					<li><a href = "Banana Cream Crunch Pie.html">Banana Cream Crunch Pie</a></li>
-					<li><a href = "Chocolate Cream Pie.html">Chocolate Cream Pie</a></li>
-					<li><a href = "Graham Cracker Pie Crust.html">Graham Cracker Pie Crust</a></li>
-					<li><a href = "Key Lime Pie.html">Key Lime Pie</a></li>
-					<li><a href = "Oreo Cream Pie.html">Oreo Cream Pie</a></li>
-					<li><a href = "Pecan Pie.html">Pecan Pie</a></li>
-					<li><a href = "Pumpkin Pie.html">Pumpkin Pie</a></li>
-				</ul>
-			</li>
-
-			<li><a href = #>Tarts</a>
-				<ul> 
-					<li><a href = "Apple Tart.html">Apple Tart</a></li>
-				</ul>
-			</li>
-
-			<li><a href = #>Other</a>
-				<ul> 
-					<li><a href = "Lemon Curd.html">Lemon Curd</a></li>
-					<li><a href = "Whipped Cream.html">Whipped Cream</a></li>
-				</ul>
-			</li>
+			<li id="homeLink"><a href = "index.html">Home</a></li>
+		</ul>
 	</div>
 
 	<!-- Navigation to recipes by query -->
@@ -157,6 +95,36 @@ $(document).on('ready', function(){
 			}
 			return allNotes
 		});
+
+	function makeNavbar(){
+		// grab stuff from firebase
+		fb.child('classification').once('value', function(data) {
+			//url should be index.html?id={{idhere}}
+			urlbase = "index.html?id=";
+
+			// unpack types
+			classifications = data.val()
+			keys = Object.keys(classifications);
+
+			//make the lists
+			navString = "";
+			for(var i = 0; i < keys.length; i++) {
+				currKey = keys[i]; // e.g. breads
+				currClassifications = classifications[currKey]; //another object with types of breads
+				classKeys = Object.keys(currClassifications);
+				navString += "<li>" + currKey + "<ul>";
+				console.log(navString)
+				for(var j = 0; j< classKeys.length; j++) {
+					navString += "<li><a href='" + urlbase + classKeys[j] + "'>" + currClassifications[classKeys[j]] + "</a></li>"; 
+				}
+				navString += "</ul></li>";
+			}
+			console.log(navString)
+			$('.navbar').append(navString);
+
+		});
+	}
+	makeNavbar();
 
 	function getQueryVariable(variable){
        var query = location().substring(1);
