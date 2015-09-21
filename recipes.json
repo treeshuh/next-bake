@@ -1,4 +1,4 @@
-{"recipes": {
+{
 	"apple-bread": {
 		"classification":"bread",
 		"displayName":"Apple Bread",
@@ -44,6 +44,11 @@
 				"displayName":"Granny Smith Apples",
 				"optional": false,
 				"quantity":"8"
+			},
+			"graham-cracker-crust": {
+				"displayName":"9-inch pie crust",
+				"optional": false,
+				"quantity": "1"
 			}
 		},
 		"time":"1 hour 30 minutes",
@@ -444,5 +449,225 @@
 		},
 		"time":"4 hour 15 min",
 		"yields":"10 servings"
+	},
+	"oreo-pancakes": {
+		"classification":"pancakes",
+		"displayName":"*Oreo Pancakes",
+		"imageLink":"http://www.grandbaby-cakes.com/wp-content/uploads/2014/06/oreo-pancakes-1.jpg",
+		"recipeLink":"http://www.grandbaby-cakes.com/2014/06/oreo-pancakes/",
+		"specialIngredients": {
+			"cocoa": {
+				"displayName":"Cocoa powder",
+				"optional": false,
+				"quantity":"2 Tbsp"
+			},
+			"butter": {
+				"displayName":"Butter",
+				"optional": false,
+				"quantity":"4 Tbsp"
+			},
+			"egg": {
+				"displayName":"Large eggs",
+				"optional": false,
+				"quantity":"2"
+			},
+			"milk": {
+				"displayName":"Buttermilk or coconut milk",
+				"optional": false,
+				"quantity":"3/4 cup + 4 Tbsp"
+			},
+			"oreos": {
+				"displayName":"Oreo cookies and cream, chopped",
+				"optional": false,
+				"quantity":"1/4 cup"
+			}
+		},
+		"time":"?",
+		"yields":"?"
+	},
+	"pecan-pie": {
+		"classification":"pie",
+		"displayName":"Pecan pie",
+		"imageLink":"http://images.media-allrecipes.com/userphotos/250x250/00/30/32/303241.jpg",
+		"recipeLink":"http://allrecipes.com/recipe/pecan-pie-v/detail.aspx",
+		"specialIngredients": {
+			"pecans": {
+				"displayName":"Chopped Pecans",
+				"optional": false,
+				"quantity":"1 Cup"
+			},
+			"butter": {
+				"displayName":"Butter",
+				"optional": false,
+				"quantity":"1 Stick"
+			},
+			"egg": {
+				"displayName":"Eggs",
+				"optional": false,
+				"quantity":"2"
+			},
+			"milk": {
+				"displayName":"Milk",
+				"optional": false,
+				"quantity":"1 Tbsp"
+			}
+		},
+		"time":"1 hour 15 min",
+		"yields":"1 9-inch pie"
+	},
+	"pumpkin-pie": {
+		"classification":"pie",
+		"displayName":"Pumpkin pie",
+		"imageLink":"https://www.meals.com/imagesrecipes/18470lrg.jpg",
+		"recipeLink":"https://www.verybestbaking.com/recipes/18470/libbys-famous-pumpkin-pie/",
+		"specialIngredients": {
+			"pumpkin": {
+				"displayName":"Pumpkin",
+				"optional": false,
+				"quantity":"1 Can (15 oz)"
+			},
+			"pie-crust": {
+				"displayName":"9-inch unbaked pie crust",
+				"optional": false,
+				"quantity":"1"
+			},
+			"egg": {
+				"displayName":"Large eggs",
+				"optional": false,
+				"quantity":"2"
+			},
+			"milk": {
+				"displayName":"Evaporated milk",
+				"optional": false,
+				"quantity":"1 Can"
+			},
+			"whipped-cream": {
+				"displayName":"Whipped Cream (optional)",
+				"optional": true,
+				"quantity":"?"
+			}
+		},
+		"time":"1 hour 20 min",
+		"yields":"1 9-inch pie"
+	},
+	"salted-brown-butter-pecan-cookies": {
+		"classification":"cookies",
+		"displayName":"*Salted Brown Butter Pecan Cookies",
+		"imageLink":"http://3.bp.blogspot.com/-M1OBQF0jxEM/Uy7SFa73UrI/AAAAAAAADE8/PLTT53U7Dhs/s1600/IMG_7428+edit+resize.jpg",
+		"recipeLink":"http://www.christinamarsigliese.com/2014/03/brown-butter-pecan-cookies.html",
+		"specialIngredients": {
+			"pecans": {
+				"displayName":"Pecans",
+				"optional": false,
+				"quantity":"3/4 cup"
+			},
+			"egg": {
+				"displayName":"Large egg",
+				"optional": false,
+				"quantity":"1"
+			},
+			"butter": {
+				"displayName":"Unsalted butter",
+				"optional": false,
+				"quantity":"3/4 Cup"
+			},
+			"salt": {
+				"displayName":"Flaked sea salt (for topping)",
+				"optional": false,
+				"quantity":"A little"
+			}
+		},
+		"time":"35 minutes + overnight refrigeration",
+		"yields":"36 cookies"
+	},
+	"triple-berry-cinnamon-swirl-bread": {
+		"classification":"bread",
+		"displayName":"*Triple Berry Cinnamon Swirl Bread",
+		"imageLink":"https://farm6.staticflickr.com/5320/13940988587_8a04b3935a_c.jpg",
+		"recipeLink":"http://joythebaker.com/2014/05/baking-bootcamp-triple-berry-cinnamon-swirl-bread/",
+		"specialIngredients": {
+			"yeast": {
+				"displayName":"Active dry yeast",
+				"optional": false,
+				"quantity":"2 1/4 tsp"
+			},
+			"milk": {
+				"displayName":"Whole milk",
+				"optional": false,
+				"quantity":"3/4 cup"
+			},
+			"egg-yolks": {
+				"displayName":"Large egg yolk",
+				"optional": false,
+				"quantity":"1"
+			},
+			"egg": {
+				"displayName":"Large egg",
+				"optional": false,
+				"quantity":"1"
+			},
+			"butter": {
+				"displayName":"Unsalted butter",
+				"optional": false,
+				"quantity":"6 Tbsp"
+			},
+			"oil": {
+				"displayName":"Vegetable oil",
+				"optional": false,
+				"quantity":"A little"
+			},
+			"berries": {
+				"displayName":"Fresh berries (strawberries, blueberries, raspberries)",
+				"optional": false,
+				"quantity":"2 cups"
+			}
+		},
+		"time":"2 hour",
+		"yields":"1 loaf"
+	},
+	"vanilla-buttercream-frosting": {
+		"classification":"frosting",
+		"displayName":"Vanilla Buttercream Frosting",
+		"imageLink":"http://hostedmedia.reimanpub.com/TOH/Images/Photos/37/300x300/expsi30118_W101973175C04_29_3b.jpg",
+		"recipeLink":"http://www.tasteofhome.com/recipes/easy-vanilla-buttercream-frosting",
+		"specialIngredients": {
+			"butter": {
+				"displayName":"Softened butter",
+				"optional": false,
+				"quantity":"1 stick"
+			},
+			"milk": {
+				"displayName":"Milk",
+				"optional": false,
+				"quantity":"5-6 Tbsp"
+			}
+		},
+		"time":"10 minutes",
+		"yields":"24 servings"
+	},
+	"vanilla-cupcakes": {
+		"classification":"cake/cupcake",
+		"displayName":"Vanilla Cupcakes",
+		"imageLink":"http://recipetineats.com/wp-content/uploads/2014/05/VanillaCupcakes33.jpg",
+		"recipeLink":"http://www.marthastewart.com/312617/vanilla-cupcakes",
+		"specialIngredients": {
+			"butter": {
+				"displayName":"Softened butter",
+				"optional": false,
+				"quantity":"1 1/2 stick"
+			},
+			"milk": {
+				"displayName":"Milk",
+				"optional": false,
+				"quantity":"1 1/4 Cups"
+			},
+			"egg": {
+				"displayName":"Large egg",
+				"optional": false,
+				"quantity":"4"
+			}
+		},
+		"time":">25 minutes",
+		"yields":"24 cupcakes"
 	}
-}}
+}
