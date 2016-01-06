@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script type="text/javascript" src="karaoke-player.js"></script>
+  </head>
+  <body>
+    <div>
+      <select id="sessionList"></select><button id="sessionChange" onclick="changeSession()">Select Session</button>
+      <input type="text" id="newSessionGroup"/> <input type="text" id="newSessionName"/><button id="addSession" onclick="newSession()">Add Session</button>
+    </div>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+  </body>
+</html>
