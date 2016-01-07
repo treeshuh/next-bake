@@ -43,7 +43,7 @@ fb.child('karaoke').child('activeSessions').on("child_added", function(snapshot)
       newSession = snapshot.val();
       date = new Date(newSession.date);
       option.text = newSession.group + " " + newSession.ID + " " + date.toLocaleDateString();
-      option.val = newSession.ID;
+      option.value = newSession.ID;
       document.getElementById("sessionList").appendChild(option);
     });
 
@@ -52,6 +52,7 @@ fb.child('karaoke').child('activeSessions').on("child_added", function(snapshot)
       val = e.options[e.selectedIndex].value;
       sessionID = val;
       songs = [];
+      console.log(sessionID);
       fb.child('karaoke').child(sessionID).on("child_added", function(snapshot) {
         console.log(snapshot.val());
         songs.push(snapshot.val());
