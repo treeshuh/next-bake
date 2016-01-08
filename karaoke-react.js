@@ -1,62 +1,154 @@
+var sanitize = function (str) {
+	return str.replace("&", " and ").replace("<", "").replace(">", "");
+}
+
+var SongSubmit = React.createClass({
+	render: function() {
+		return (
+			<form onSubmit={this.submitSong}>
+			<input type="text" placeholder="Your Name" onChange={this.handleNameChange} value={this.state.personName}></input>
+			<input type="text" placeholder="Song Title" onChange={this.handleSongNameChange} value={this.state.songName}></input>
+			<input type="text" placeholder="Song Artist" onChange={this.handleSongArtistChange} value={this.state.songArtist}></input>
+			<button type="submit">GO!</button>
+			</form>
+		)
+	},
+
+	submitSong: function(e) {
+		e.preventDefault();
+		var me = this;
+		var browserKey = "AIzaSyD3Ivd-nft7gnXM35ldEtI-FO9YS3RYi5I";
+	    var searchText = this.state.songName + "+" + this.state.songArtist + "+lyrics";
+	    $.ajax({
+	      url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchText.replace(" ", "+") + "&key=" + browserKey,
+	      dataType: "jsonp"
+	    }).done(function(data) {
+	      var n = data.items.length;
+	      var videoIDs = [];
+
+	      for (var i = 0; i < n; i ++) {
+	        var item = data.items[i];
+	        if (item.id.kind=="youtube#video") {
+	          videoIDs.push(item.id.videoId);
+	        }
+	      }
+	      
+	      var newQueueItem = me.props.fb.push();
+	      newQueueItem.set({
+	        person: me.state.personName,
+	        song: {
+	          name: me.state.songName,
+	          artist: me.state.songArtist
+	        },
+	        videoIDs: videoIDs
+	      });
+
+	      me.setState({personName: "", songName: "", songArtist: ""});
+	    });
+	}, 
+
+	handleNameChange: function(e) {
+		this.setState({personName: sanitize(e.target.value)});
+	},
+
+	handleSongNameChange: function(e) {
+		this.setState({songName: sanitize(e.target.value)});
+	},
+
+	handleSongArtistChange: function(e) {
+		this.setState({songArtist: sanitize(e.target.value)});
+	},
+
+	getInitialState: function() {
+		return {personName: "", songName: "", songArtist: ""};
+	}
+})
+
 var SongQueue = React.createClass({
   	mixins: [ReactFireMixin], 
   	render: function() {
   		console.log("rerendering");
   		console.log(this.state.songList);
-    	return (
-      	<div className="SongQueue">
-        	Hello, world! I am a Song Queue.
-      	</div>
-    	);
+  		if (this.state.songList) {
+			var songNodes = this.state.songList.map(function(song) {
+	  			return (
+	  				<li>{song.person} | {song.song.name} | {song.song.artist}</li>
+	  			)
+	  		});  
+	  		return (
+	  			<div>
+		      	<ol className="SongQueue">
+		        	{songNodes}
+		      	</ol>
+		      	<SongSubmit fb = {this.state.fbRef}/>
+		      	</div>
+	  		);		
+  		} else {
+  			return (
+  				<h2> &lt; no songs to load &gt; </h2>
+  			)
+  		}
+  		
   	},
 
 	componentWillMount: function() {
-		var $component = $("#sessionChange");
+		var $button = $("#sessions .sessionForm button");
 		var me = this;
-		$component.on('click', function() {
-			console.log("change");
-			var fb = new Firebase("https://next-bake.firebaseio.com/karaoke/" + sessionID);
-			if (me.state.songList) {
-				me.unbind("songList");
-			}
-			me.bindAsArray(fb, "songList");
-		});
-		/*  		console.log("songs are");
-		  		console.log(e.target.value);
-		  		console.log(this.state.songList);*/
+		$button.on('click', me.updateFB);
+	},
+
+	updateFB: function() {
+		var $select = $("#sessions .sessionForm select");
+		var fb = new Firebase("https://next-bake.firebaseio.com/karaoke/" + $select.val());
+		var me = this;
+		me.setState({fbRef: fb});
+		if (me.state.songList) {
+			me.unbind("songList");
+		}
+		me.bindAsArray(me.state.fbRef, "songList");
+	},
+
+	componentWillDismount: function() {
+		var $button = $("#sessions .sessionForm button");
+		var me = this;
+		$button.off('click', me.updateFB);
 	},
 
 	getInitialState: function() {
-		return {songList: null};
+		return {songList: null, fbRef: null};
 	}
 });
 
-/*var SessionSelect = React.createClass({
+var SessionSelect = React.createClass({
 	mixins: [ReactFireMixin],
 	sessionChange: function(e) {
 		if (e.target.value == "-") {
 			return;
 		}
-		this.setState({sessionID: e.target.value});
+		this.setState({tempSessionID: e.target.value});
+	},
+
+	handleSubmit: function(e) {
+		e.preventDefault();
+		this.setState({sessionID: this.state.tempSessionID});
 	},
 
 	render: function() {
 		var me = this;
 		var sessionNodes = this.state.sessionList.map(function(newSession) {
-			date = new Date(newSession.date);
+			var date = new Date(newSession.date);
 			return (
 				<option value={newSession.ID}> {newSession.group} {newSession.ID} {date.toLocaleDateString()}</option> 
 			)
 		})
 		return (
 			<div>
-			<h2> hiii </h2>
-			<form>
-				<select className = "sessionSelect" value={this.state.sessionID} onChange={this.sessionChange}>
+			<form className="sessionForm">
+				<select className="sessionSelect" value={this.state.tempSessionID} onChange={this.sessionChange}>
 					{sessionNodes}
 				</select>
+				<button className="sessionButton" onClick={this.handleSubmit}>CONFIRM</button>
 			</form>
-			<SongQueue />
 			</div>
 		)
 	},
@@ -67,7 +159,7 @@ var SongQueue = React.createClass({
 	},
 
 	getInitialState: function() {
-		return {sessionList: [], sessionID: "placeholder"};
+		return {sessionList: [], tempSessionID: null, sessionID: null};
 	}
 });
 
@@ -75,15 +167,6 @@ ReactDOM.render(
 	<SessionSelect />, 
 	document.getElementById('sessions')
 );
-*/
-
-
-/*  componentWillMount: function() {
-  },
-
-  getInitialState: function() {
-  	return {};
-  }*/
 
 ReactDOM.render(
   <SongQueue />,

@@ -1,18 +1,20 @@
 
   var fb = new Firebase("https://next-bake.firebaseio.com/");
       var browserKey = "AIzaSyD3Ivd-nft7gnXM35ldEtI-FO9YS3RYi5I";
-      sessionID = "placeholder";
+      sessionID = "mixer";
 $(document).on('ready', function(){
 
   $("#search").on('click',function() {
+    console.log("searching");
     userText = $("#karaokeUser").val();
     songName = $("#songName").val();
     songArtist = $("#songArtist").val();
     searchText = songName + "+" + songArtist + "+lyrics";
-
     $.ajax({
-      url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchText.replace(" ", "+") + "&key=" + browserKey
+      url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchText.replace(" ", "+") + "&key=" + browserKey,
+      dataType: "jsonp"
     }).done(function(data) {
+      console.log("done");
       console.log(data);
       n = data.items.length;
       videoIDs = [];
@@ -37,25 +39,4 @@ $(document).on('ready', function(){
   });  
 
 })
-fb.child('karaoke').child('activeSessions').on("child_added", function(snapshot){
-      option = document.createElement("option");
-      console.log(snapshot.val());
-      newSession = snapshot.val();
-      date = new Date(newSession.date);
-      option.text = newSession.group + " " + newSession.ID + " " + date.toLocaleDateString();
-      option.value = newSession.ID;
-      document.getElementById("sessionList").appendChild(option);
-    });
 
-    function changeSession() {
-      e = document.getElementById("sessionList");
-      val = e.options[e.selectedIndex].value;
-      sessionID = val;
-      songs = [];
-      console.log(sessionID);
-      fb.child('karaoke').child(sessionID).on("child_added", function(snapshot) {
-        console.log(snapshot.val());
-        songs.push(snapshot.val());
-        console.log(songs)
-      });
-    }
