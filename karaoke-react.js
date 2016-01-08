@@ -70,11 +70,16 @@ var SongQueue = React.createClass({
   		console.log("rerendering");
   		console.log(this.state.songList);
   		if (this.state.songList) {
-			var songNodes = this.state.songList.map(function(song) {
-	  			return (
-	  				<li>{song.person} | {song.song.name} | {song.song.artist}</li>
-	  			)
-	  		});  
+  			var songNodes = null;
+  			if (this.state.songList.length > 0) {
+				songNodes = this.state.songList.map(function(song) {
+		  			return (
+		  				<li>{song.person} | {song.song.name} | {song.song.artist}</li>
+		  			)
+	  			}); 
+  			} else {
+  				songNodes = <h2> &lt; no songs to load &gt; </h2>
+  			} 
 	  		return (
 	  			<div>
 		      	<ol className="SongQueue">
@@ -85,7 +90,7 @@ var SongQueue = React.createClass({
 	  		);		
   		} else {
   			return (
-  				<h2> &lt; no songs to load &gt; </h2>
+  				<h2> Select a Session </h2>
   			)
   		}
   		
