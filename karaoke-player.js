@@ -30,8 +30,8 @@
       var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
       var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
       player = new YT.Player('player', {
-        height: h,
-        width: w,
+        height: 0.8*h,
+        width: 0.8*w,
         videoId: 'M7lc1UVf-VE',
         events: {
           'onReady': onPlayerReady,
@@ -96,25 +96,4 @@
       vidID = currentSong.videoIDs[currentIndex];
       player.loadVideoById(vidID);
       player.playVideo();   
-    }
-
-    function newSession() {
-      queueItem = fb.child('karaoke').child('activeSessions').push();
-      queueItem.set({
-        group: document.getElementById("newSessionGroup").value,
-        date: Date.now(),
-        ID: document.getElementById("newSessionName").value
-      })
-    }
-
-    function changeSession() {
-      e = document.getElementById("sessionList");
-      val = e.options[e.selectedIndex].value;
-      sessionID = val;
-      songs = [];
-      fb.child('karaoke').child(sessionID).on("child_added", function(snapshot) {
-        console.log(snapshot.val());
-        songs.push(snapshot.val());
-        console.log(songs)
-      });
     }
