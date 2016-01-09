@@ -64,11 +64,9 @@ var SongSubmit = React.createClass({
 	}
 })
 
-var SongQueue = React.createClass({
+window.SongQueue = React.createClass({
   	mixins: [ReactFireMixin], 
   	render: function() {
-  		console.log("rerendering");
-  		console.log(this.state.songList);
   		if (this.state.songList) {
   			var songNodes = null;
   			if (this.state.songList.length > 0) {
@@ -80,12 +78,22 @@ var SongQueue = React.createClass({
   			} else {
   				songNodes = <h2> &lt; no songs to load &gt; </h2>
   			} 
+  			var playerNode = null;
+ 			if (this.props.player) {
+ 				console.log(this.state.queueStatus.songNum)
+ 				playerNode = <window.YoutubePlayer songList={this.state.songList} fb={this.state.fbRef.child('queueStatus')} songNum={this.state.queueStatus.songNum}/>
+ 			} else {
+ 				playerNode = <div></div>
+ 			}
 	  		return (
+	  			<div>
 	  			<div>
 		      	<ol className="SongQueue">
 		        	{songNodes}
 		      	</ol>
-		      	<SongSubmit fb = {this.state.fbRef}/>
+		      	<SongSubmit fb={this.state.fbRef.child('songList')}/>
+		      	</div>
+		      		{playerNode}
 		      	</div>
 	  		);		
   		} else {
@@ -107,10 +115,14 @@ var SongQueue = React.createClass({
 		var fb = new Firebase("https://next-bake.firebaseio.com/karaoke/" + $select.val());
 		var me = this;
 		me.setState({fbRef: fb});
-		if (me.state.songList) {
+
+		if (me.state.bindings) {
+			me.unbind("queueStatus");
 			me.unbind("songList");
 		}
-		me.bindAsArray(me.state.fbRef, "songList");
+		me.bindAsArray(me.state.fbRef.child('songList'), "songList");
+		me.bindAsObject(me.state.fbRef.child('queueStatus'), "queueStatus");
+		me.setState({bindings: true});
 	},
 
 	componentWillDismount: function() {
@@ -120,11 +132,11 @@ var SongQueue = React.createClass({
 	},
 
 	getInitialState: function() {
-		return {songList: null, fbRef: null};
+		return {songList: null, fbRef: null, queueStatus: {songNum: -1}, bindings: false};
 	}
 });
 
-var SessionSelect = React.createClass({
+window.SessionSelect = React.createClass({
 	mixins: [ReactFireMixin],
 	sessionChange: function(e) {
 		if (e.target.value == "-") {
@@ -167,13 +179,3 @@ var SessionSelect = React.createClass({
 		return {sessionList: [], tempSessionID: null, sessionID: null};
 	}
 });
-
-ReactDOM.render(
-	<SessionSelect />, 
-	document.getElementById('sessions')
-);
-
-ReactDOM.render(
-  <SongQueue />,
-  document.getElementById('songQ')
-);
