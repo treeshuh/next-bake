@@ -79,7 +79,8 @@ window.YoutubePlayer = React.createClass({
 
   jumpToSongSubmit: function(event) {
     event.preventDefault();
-    this.jumpToSong(parseInt(this.state.jumpIndex));
+    //offset by one because of 0-indexing
+    this.jumpToSong(parseInt(this.state.jumpIndex)-1);
     this.setState({jumpIndex: ''});
   },
 
@@ -109,4 +110,45 @@ window.YoutubePlayer = React.createClass({
   getInitialState: function() {
     return {vidIndex: 0, jumpIndex: ''};
   }
+});
+
+window.SessionCreator = React.createClass({
+  render: function() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" placeholder="New Session ID" onChange={this.handleIDChange} value={this.state.ID}></input>
+        <input type="text" placeholder="New Session Group" onChange={this.handleGroupChange} value={this.state.group}></input>
+        <button type="submit">Create</button>
+      </form>
+    )
+  },
+
+  componentDidMount: function() {
+    this._fb = new Firebase("https://next-bake.firebaseio.com/karaoke");
+  },
+
+  handleSubmit: function(e) {
+    e.preventDefault();
+    var me = this;
+    var newSession = this._fb.child('activeSessions').push();
+    newSession.set({
+      date: Date.now(),
+      ID: me.state.ID,
+      group: this.state.group
+    });
+    this._fb.child(me.state.ID).child('queueStatus').set({songNum: -1});
+    this.setState({ID: '', group: ''});
+  },
+
+  handleIDChange: function(e) {
+    this.setState({ID: sanitize(e.target.value)});
+  },
+
+  handleGroupChange: function(e) {
+    this.setState({group: sanitize(e.target.value)});
+  },
+
+  getInitialState: function() {
+    return {ID: '', group: ''}
+  }  
 });

@@ -11,3 +11,8 @@ ReactDOM.render(
   <window.SessionSelect />, 
   document.getElementById('sessions')
 );
+
+ReactDOM.render(
+  <window.SessionCreator />, 
+  document.getElementById("sessionCreator")
+);

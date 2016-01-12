@@ -1,0 +1,75 @@
+html {
+	font-family: 'Lato', sans-serif;
+	background-color: #101010;
+	width: 100vw;
+	height: 100vh;
+	color: #fefefe;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	padding-bottom: 20px;
+}
+
+input[type="text"], button, select, select option {
+	font-family: 'Lato';
+}
+
+select {
+	appearance:button;
+	-moz-appearance:button; /* Firefox */
+	-webkit-appearance:button; /* Safari and Chrome */
+	padding: 10px;
+	padding-right: 20px;
+	background-color: #101010;
+	background: url('arrow-01.png') no-repeat right;
+	color: #efefef;
+	margin-right: 20px;
+}
+
+select option {
+	background-color: #101010;
+	color: #efefef;
+}
+
+button {
+	background-color: rgba(0,0,0,0);
+	color: #efefef;
+	padding: 10px;
+	border: 1px solid #efefef;
+}
+
+button:focus {
+	outline: 0;
+}
+
+#navigation {
+/*	background: red; /* For browsers that do not support gradients 
+  	background: -webkit-linear-gradient(left top, #F399C1, #F8A46D); /* For Safari 5.1 to 6.0 
+  	background: -o-linear-gradient(bottom right, #F399C1, #F8A46D); /* For Opera 11.1 to 12.0 
+  	background: -moz-linear-gradient(bottom right, #F399C1, #F8A46D); /* For Firefox 3.6 to 15 
+	background: linear-gradient(to bottom right, #F399C1, #F8A46D); /* Standard syntax */
+	text-align: center;
+	margin-top: 50px;
+}
+
+#sessions, #songQ {
+	margin-left: auto;
+	margin-right: auto;
+	width: 750px;
+	text-align: center;
+}
+.SongQueue {
+  height: 50px;
+  overflow: auto;
+}
+
+.SongQueue .active {
+  color: blue;
+}

@@ -62,7 +62,19 @@ var SongSubmit = React.createClass({
 	getInitialState: function() {
 		return {personName: "", songName: "", songArtist: ""};
 	}
-})
+});
+
+var SongItem = React.createClass({
+	render: function() {
+		var className = "";
+		if (this.props.active) {
+			className = "active";
+		}
+		return (
+			<li className={className}>{this.props.song.person} | {this.props.song.song.name} | {this.props.song.song.artist}</li>
+		)
+	}
+});
 
 window.SongQueue = React.createClass({
   	mixins: [ReactFireMixin], 
@@ -70,9 +82,10 @@ window.SongQueue = React.createClass({
   		if (this.state.songList) {
   			var songNodes = null;
   			if (this.state.songList.length > 0) {
-				songNodes = this.state.songList.map(function(song) {
+  				var me = this;
+				songNodes = this.state.songList.map(function(song, i) {
 		  			return (
-		  				<li>{song.person} | {song.song.name} | {song.song.artist}</li>
+		  				<SongItem song={song} active={i == me.state.queueStatus.songNum} />
 		  			)
 	  			}); 
   			} else {
@@ -80,7 +93,6 @@ window.SongQueue = React.createClass({
   			} 
   			var playerNode = null;
  			if (this.props.player) {
- 				console.log(this.state.queueStatus.songNum)
  				playerNode = <window.YoutubePlayer songList={this.state.songList} fb={this.state.fbRef.child('queueStatus')} songNum={this.state.queueStatus.songNum}/>
  			} else {
  				playerNode = <div></div>
@@ -88,7 +100,7 @@ window.SongQueue = React.createClass({
 	  		return (
 	  			<div>
 	  			<div>
-		      	<ol className="SongQueue">
+		      	<ol className="SongQueue" >
 		        	{songNodes}
 		      	</ol>
 		      	<SongSubmit fb={this.state.fbRef.child('songList')}/>
@@ -98,10 +110,21 @@ window.SongQueue = React.createClass({
 	  		);		
   		} else {
   			return (
-  				<h2> Select a Session </h2>
+  				<h2></h2>
   			)
   		}
   		
+  	},
+
+  	componentDidUpdate: function(prevprops, prevstate) {
+  		if (this.props.player && (prevstate.queueStatus.songNum != this.state.queueStatus.songNum)) {
+  			// http://stackoverflow.com/questions/2905867/how-to-scroll-to-specific-item-using-jquery
+  			var container = $(".SongQueue");
+  			var scrollTo = $(".SongQueue .active");
+  			container.animate({
+  				scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+  			});
+  		}
   	},
 
 	componentWillMount: function() {
@@ -111,6 +134,7 @@ window.SongQueue = React.createClass({
 	},
 
 	updateFB: function() {
+		console.log('updating');
 		var $select = $("#sessions .sessionForm select");
 		var fb = new Firebase("https://next-bake.firebaseio.com/karaoke/" + $select.val());
 		var me = this;
@@ -147,7 +171,12 @@ window.SessionSelect = React.createClass({
 
 	handleSubmit: function(e) {
 		e.preventDefault();
-		this.setState({sessionID: this.state.tempSessionID});
+		if (this.state.tempSessionID == null) {
+			var $select = $("#sessions .sessionForm select");
+			this.setState({tempSessionID: $select.val(), sessionID: $select.val()});
+		} else{
+			this.setState({sessionID: this.state.tempSessionID});
+		}
 	},
 
 	render: function() {
@@ -157,14 +186,23 @@ window.SessionSelect = React.createClass({
 			return (
 				<option value={newSession.ID}> {newSession.group} {newSession.ID} {date.toLocaleDateString()}</option> 
 			)
-		})
+		});
+
+		var headingNode = null;
+		var buttonText = "CHANGE";
+		if (!this.state.sessionID) {
+			headingNode = <h2>Select a Session</h2>
+			buttonText = "CONFIRM";
+		}
+
 		return (
 			<div>
+			{headingNode}
 			<form className="sessionForm">
 				<select className="sessionSelect" value={this.state.tempSessionID} onChange={this.sessionChange}>
 					{sessionNodes}
 				</select>
-				<button className="sessionButton" onClick={this.handleSubmit}>CONFIRM</button>
+				<button className="sessionButton" onClick={this.handleSubmit}>{buttonText}</button>
 			</form>
 			</div>
 		)
