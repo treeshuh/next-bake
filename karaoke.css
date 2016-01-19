@@ -15,10 +15,58 @@ body {
 
 img {
 	padding-bottom: 20px;
+	width: 150px;
 }
 
 input[type="text"], button, select, select option {
 	font-family: 'Lato';
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+input[type="text"] {
+	padding-bottom: 5px;
+    margin: 15px;
+    border: 0;
+    border-bottom: 3px solid #BF55EC;
+    color: #efefef;
+    background-color: rgba(0, 0, 0, 0);
+    width: 200px;
+    text-align: center;
+    animation-name: inputText;
+    animation-duration: 1s;
+}
+
+input[type="text"]:focus {
+	outline: none;
+}
+
+@keyframes inputText {
+	from {width: 0;}
+	to {width: 200px;}
+}
+
+.songSubmitButton {
+	display: block;
+	animation-name: fade;
+	animation-duration: 1s;
+	opacity: 1;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@keyframes fade {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+.songSubmitButton:disabled {
+	color: #444;
+	border: 1px solid #444;
+	cursor: default;
 }
 
 select {
@@ -50,11 +98,6 @@ button:focus {
 }
 
 #navigation {
-/*	background: red; /* For browsers that do not support gradients 
-  	background: -webkit-linear-gradient(left top, #F399C1, #F8A46D); /* For Safari 5.1 to 6.0 
-  	background: -o-linear-gradient(bottom right, #F399C1, #F8A46D); /* For Opera 11.1 to 12.0 
-  	background: -moz-linear-gradient(bottom right, #F399C1, #F8A46D); /* For Firefox 3.6 to 15 
-	background: linear-gradient(to bottom right, #F399C1, #F8A46D); /* Standard syntax */
 	text-align: center;
 	margin-top: 50px;
 }
@@ -62,14 +105,64 @@ button:focus {
 #sessions, #songQ {
 	margin-left: auto;
 	margin-right: auto;
-	width: 750px;
+	width: 80vw;
 	text-align: center;
 }
 .SongQueue {
-  height: 50px;
-  overflow: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
+  border: 1px solid white;
+  display: inline-block;
+  max-height: 40vh;
+  overflow-y: auto;
+  text-overflow: ellipsis;
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0px 5px;
 }
 
 .SongQueue .active {
-  color: blue;
+  background-attachment: fixed;
+  background-color: #BF55EC;
+  /* background: red; /* For browsers that do not support gradients  */
+  /*	background: -webkit-linear-gradient(left top, #F399C1, #F8A46D); /* For Safari 5.1 to 6.0 */
+  /*	background: -o-linear-gradient(bottom right, #F399C1, #F8A46D); /* For Opera 11.1 to 12.0 */
+  /*	background: -moz-linear-gradient(bottom right, #F399C1, #F8A46D); /* For Firefox 3.6 to 15 */
+  /*  background: linear-gradient(to bottom right, #F399C1, #F8A46D); /* Standard syntax */
 }
+
+.SongQueue tr {
+	background-color: #202020;
+	margin: 10px;
+	padding: 10px;
+}
+
+.SongQueue tr td {
+	width: 20vw;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.SongQueueHolder {
+	text-align: center;
+}
+
+.SongQueue::-webkit-scrollbar {
+	width: 10px;
+} 
+
+.SongQueue::-webkit-scrollbar-track {
+	border: 1px solid white;
+/*	border-radius: 12px;
+*/} 
+
+.SongQueue::-webkit-scrollbar-thumb {
+/*	border-radius: 12px;
+*/	background-color: white;
+}
+
+.SongQueueHolder form {
+	border: 1px solid white;
+	padding-bottom: 20px;
+} 

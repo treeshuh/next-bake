@@ -70,10 +70,12 @@ window.YoutubePlayer = React.createClass({
   },
 
   nextSong: function(event) {
+    event.preventDefault();
     this.jumpToSong(this.props.songNum + 1);
   },
 
   handleJumpChange: function(event) {
+    event.preventDefault();
     this.setState({jumpIndex: sanitize(event.target.value)});
   },
 
@@ -103,7 +105,6 @@ window.YoutubePlayer = React.createClass({
 
   updateAndPlayVideo: function() {
     var vidID = this._song.videoIDs[this.state.vidIndex];
-    console.log(vidID);
     this._player.loadVideoById(vidID);
   },
 
@@ -116,7 +117,7 @@ window.SessionCreator = React.createClass({
   render: function() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="New Session ID" onChange={this.handleIDChange} value={this.state.ID}></input>
+        <input type="text" placeholder="New Session Display Name" onChange={this.handleDisplayNameChange} value={this.state.displayName}></input>
         <input type="text" placeholder="New Session Group" onChange={this.handleGroupChange} value={this.state.group}></input>
         <button type="submit">Create</button>
       </form>
@@ -131,17 +132,21 @@ window.SessionCreator = React.createClass({
     e.preventDefault();
     var me = this;
     var newSession = this._fb.child('activeSessions').push();
+    var date = Date.now();
+    var ID = me.state.displayName+date;
+    ID = ID.replace(/\s+/g, '');
     newSession.set({
-      date: Date.now(),
-      ID: me.state.ID,
+      date: date,
+      ID: ID,
+      displayName: me.state.displayName,
       group: this.state.group
     });
-    this._fb.child(me.state.ID).child('queueStatus').set({songNum: -1});
-    this.setState({ID: '', group: ''});
+    this._fb.child(ID).child('queueStatus').set({songNum: -1});
+    this.setState({displayName: '', group: ''});
   },
 
-  handleIDChange: function(e) {
-    this.setState({ID: sanitize(e.target.value)});
+  handleDisplayNameChange: function(e) {
+    this.setState({displayName: sanitize(e.target.value)});
   },
 
   handleGroupChange: function(e) {
@@ -149,6 +154,6 @@ window.SessionCreator = React.createClass({
   },
 
   getInitialState: function() {
-    return {ID: '', group: ''}
+    return {displayName: '', group: ''}
   }  
 });

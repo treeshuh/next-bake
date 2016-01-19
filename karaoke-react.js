@@ -4,12 +4,16 @@ var sanitize = function (str) {
 
 var SongSubmit = React.createClass({
 	render: function() {
+		var disabled = true;
+		if (this.state.personName != "" && this.state.songName != "") {
+			disabled = false;
+		}
 		return (
 			<form onSubmit={this.submitSong}>
 			<input type="text" placeholder="Your Name" onChange={this.handleNameChange} value={this.state.personName}></input>
 			<input type="text" placeholder="Song Title" onChange={this.handleSongNameChange} value={this.state.songName}></input>
 			<input type="text" placeholder="Song Artist" onChange={this.handleSongArtistChange} value={this.state.songArtist}></input>
-			<button type="submit">GO!</button>
+			<button className="songSubmitButton" type="submit" disabled={disabled}>&#x2795; Add to Queue</button>
 			</form>
 		)
 	},
@@ -71,7 +75,7 @@ var SongItem = React.createClass({
 			className = "active";
 		}
 		return (
-			<li className={className}>{this.props.song.person} | {this.props.song.song.name} | {this.props.song.song.artist}</li>
+			<tr className={className}><td>{this.props.index+1}</td><td>{this.props.song.person}</td><td>{this.props.song.song.name}</td><td>{this.props.song.song.artist}</td></tr>
 		)
 	}
 });
@@ -79,31 +83,38 @@ var SongItem = React.createClass({
 window.SongQueue = React.createClass({
   	mixins: [ReactFireMixin], 
   	render: function() {
-  		if (this.state.songList) {
+  		if (this.state.songList && this.state.queueStatus) {
   			var songNodes = null;
   			if (this.state.songList.length > 0) {
   				var me = this;
 				songNodes = this.state.songList.map(function(song, i) {
 		  			return (
-		  				<SongItem song={song} active={i == me.state.queueStatus.songNum} />
+		  				<SongItem song={song} active={i == me.state.queueStatus.songNum} index={i}/>
 		  			)
 	  			}); 
-  			} else {
-  				songNodes = <h2> &lt; no songs to load &gt; </h2>
-  			} 
+  			}
   			var playerNode = null;
  			if (this.props.player) {
  				playerNode = <window.YoutubePlayer songList={this.state.songList} fb={this.state.fbRef.child('queueStatus')} songNum={this.state.queueStatus.songNum}/>
  			} else {
  				playerNode = <div></div>
  			}
+
+ 			var submitNode = null;
+ 			if (this.state.adding) {
+		      	submitNode = <SongSubmit fb={this.state.fbRef.child('songList')}/>
+ 			} else {
+ 				submitNode = <button onClick={this.addSong}>&#x2795; New Song</button>
+ 			}
 	  		return (
 	  			<div>
-	  			<div>
-		      	<ol className="SongQueue" >
+	  			<div className="SongQueueHolder">
+		      	<table className="SongQueue">
+		      	<tbody>
 		        	{songNodes}
-		      	</ol>
-		      	<SongSubmit fb={this.state.fbRef.child('songList')}/>
+		        	</tbody>
+		      	</table>
+		      	{submitNode}
 		      	</div>
 		      		{playerNode}
 		      	</div>
@@ -113,7 +124,10 @@ window.SongQueue = React.createClass({
   				<h2></h2>
   			)
   		}
-  		
+  	},
+
+  	addSong: function() {
+  		this.setState({adding: true});
   	},
 
   	componentDidUpdate: function(prevprops, prevstate) {
@@ -134,7 +148,6 @@ window.SongQueue = React.createClass({
 	},
 
 	updateFB: function() {
-		console.log('updating');
 		var $select = $("#sessions .sessionForm select");
 		var fb = new Firebase("https://next-bake.firebaseio.com/karaoke/" + $select.val());
 		var me = this;
@@ -156,7 +169,7 @@ window.SongQueue = React.createClass({
 	},
 
 	getInitialState: function() {
-		return {songList: null, fbRef: null, queueStatus: {songNum: -1}, bindings: false};
+		return {songList: null, fbRef: null, queueStatus: {songNum: -1}, bindings: false, adding: false};
 	}
 });
 
@@ -184,7 +197,7 @@ window.SessionSelect = React.createClass({
 		var sessionNodes = this.state.sessionList.map(function(newSession) {
 			var date = new Date(newSession.date);
 			return (
-				<option value={newSession.ID}> {newSession.group} {newSession.ID} {date.toLocaleDateString()}</option> 
+				<option value={newSession.ID}> {newSession.group} {newSession.displayName} {date.toLocaleDateString()}</option> 
 			)
 		});
 
