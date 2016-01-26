@@ -87,7 +87,7 @@ window.YoutubePlayer = React.createClass({
   onPlayerReady: function(event) {
     this._playerReady = true;
     if (this.props.songNum >= 0) {
-      this.jumpToSong(this.props.songNum+1);
+      this.jumpToSong(this.props.songNum);
     }
   },
 
