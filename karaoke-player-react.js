@@ -105,27 +105,38 @@ window.YoutubePlayer = React.createClass({
 
   updateAndPlayVideo: function() {
     var vidID = this._song.videoIDs[this.state.vidIndex];
-    this._player.loadVideoById(vidID);
+    this.state.player.loadVideoById(vidID);
   },
 
   getInitialState: function() {
-    return {vidIndex: 0, jumpIndex: ''};
+    return {vidIndex: 0, jumpIndex: '', player: null, playerReady: false};
   }
 });
 
 window.SessionCreator = React.createClass({
   render: function() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="New Session Display Name" onChange={this.handleDisplayNameChange} value={this.state.displayName}></input>
-        <input type="text" placeholder="New Session Group" onChange={this.handleGroupChange} value={this.state.group}></input>
-        <button type="submit">Create</button>
-      </form>
-    )
+    if (this.state.creating) {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <h2>Make a New Session</h2>
+          <input type="text" placeholder="New Session Group" onChange={this.handleGroupChange} value={this.state.group}></input>
+          <input type="text" placeholder="New Session Display Name" onChange={this.handleDisplayNameChange} value={this.state.displayName}></input>
+          <button type="submit">Create</button>
+        </form>
+      )
+    } else {
+      return (
+        <button onClick={this.startCreate}>&#x2795; Create New Session</button>
+      )
+    }
   },
 
   componentDidMount: function() {
     this._fb = new Firebase("https://next-bake.firebaseio.com/karaoke");
+  },
+
+  startCreate: function() {
+    this.setState({creating: true});
   },
 
   handleSubmit: function(e) {
@@ -142,7 +153,7 @@ window.SessionCreator = React.createClass({
       group: this.state.group
     });
     this._fb.child(ID).child('queueStatus').set({songNum: -1});
-    this.setState({displayName: '', group: ''});
+    this.setState({displayName: '', group: '', creating: false});
   },
 
   handleDisplayNameChange: function(e) {
@@ -154,6 +165,6 @@ window.SessionCreator = React.createClass({
   },
 
   getInitialState: function() {
-    return {displayName: '', group: ''}
+    return {displayName: '', group: '', creating: false}
   }  
 });

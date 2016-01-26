@@ -242,5 +242,5 @@ button:focus {
 	@keyframes inputText {
 	from {width: 0;}
 	to {width: 90vw;}
-}
+	}
 }

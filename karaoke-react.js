@@ -131,13 +131,15 @@ window.SongQueue = React.createClass({
   	},
 
   	componentDidUpdate: function(prevprops, prevstate) {
-  		if (this.props.player && (prevstate.queueStatus.songNum != this.state.queueStatus.songNum)) {
+  		if (this.props.player && (prevstate.queueStatus && this.state.queueStatus && prevstate.queueStatus.songNum != this.state.queueStatus.songNum)) {
   			// http://stackoverflow.com/questions/2905867/how-to-scroll-to-specific-item-using-jquery
   			var container = $(".SongQueue");
   			var scrollTo = $(".SongQueue .active");
-  			container.animate({
-  				scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-  			});
+  			if (container.offset() && scrollTo.offset()) {
+	  			container.animate({
+	  				scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+	  			});
+  			}
   		}
   	},
 
