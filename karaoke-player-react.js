@@ -17,7 +17,6 @@ window.YoutubePlayer = React.createClass({
 
   componentDidMount: function() {
     this.makePlayer();
-    this.props.fb.update({songNum: -1});
   },
 
   shouldComponentUpdate: function(nextprops, nextstate) {
@@ -93,9 +92,6 @@ window.YoutubePlayer = React.createClass({
 
   onPlayerReady: function(event) {
     this._playerReady = true;
-    if (!this._song && this.props.songList.length > 0) {
-      this.jumpToSong(0);
-    }
   },
 
   nextSong: function(event) {
