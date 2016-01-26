@@ -5,3 +5,58 @@
 	text-align: center;
 	margin-top: 10px;
 }
+
+#songQ {
+	margin: 0;
+	width: 20vw;
+	display: inline-block;
+}
+
+#player {
+	vertical-align: top;
+	margin-left: 5vw;
+	margin-top: 20px;
+}
+
+.SongQueue {
+	width: 100%;
+	overflow-x: hidden;
+	max-height: 70vh;
+}
+
+.SongQueue tr td{
+	display: block;
+	width: 20vw;
+	text-align: center;
+	line-height: 100%;
+	padding: 0;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.SongQueue tr td:first-child {
+	width: 100%;
+}
+
+.SongQueue tr td:last-child {
+	padding-bottom: 10px;
+}
+
+.playerButtons {
+	display: block;
+}
+
+.playerButtons input[type="text"] {
+	width: 60px;
+	animation-name: inputTextSmall;
+    animation-duration: 1s;
+}
+
+.playerButtons form {
+	display: inline-block;
+}
+
+@keyframes inputTextSmall {
+	from {width: 0;}
+	to {width: 50px;}
+}

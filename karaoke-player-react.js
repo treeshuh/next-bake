@@ -4,13 +4,14 @@ var sanitize = function (str) {
 
 window.YoutubePlayer = React.createClass({
   render: function() {
-    return (<div>
-      <button onClick={this.nextSong}>Next Song</button>
-      <button onClick={this.nextVidID}>Next ID</button>
+    return (
+      <div className="playerButtons">
       <form onSubmit={this.jumpToSongSubmit}>
         <input type="text" onChange={this.handleJumpChange} placeholder="Jump to..." value={this.state.jumpIndex}></input>
         <button type="submit">JUMP</button>
       </form>
+      <button onClick={this.nextSong}>Next Song</button>
+      <button onClick={this.nextVidID}>Next ID</button>
       </div>)
   }, 
 
@@ -27,8 +28,6 @@ window.YoutubePlayer = React.createClass({
   },
 
   componentDidUpdate: function(prevprop, prevstate) {
-    console.log(prevprop);
-    console.log(this.props)
     if (!this._song && this.props.songList.length > 0 && this._playerReady) {
       this.jumpToSong(0);
     }
@@ -36,7 +35,7 @@ window.YoutubePlayer = React.createClass({
 
   makePlayer: function() {
     var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var scaledW = 0.75*w;
+    var scaledW = 0.70*w;
     var me = this;
     var newPlayer = new window.YT.Player('player', {
       height: scaledW*9/16,
@@ -58,7 +57,37 @@ window.YoutubePlayer = React.createClass({
 
   onPlayerStateChange: function(event) {
     if (event.data == 0) {
-      this.nextSong();
+      $("#songQ .active").css("background", "#202020");
+      var $next = $("#songQ .active + tr");
+      if ($next && $next != []) {
+        var container = $(".SongQueue");
+        var scrollTo = $next;
+        if (container.offset() && scrollTo.offset()) {
+          container.animate({
+            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+          });
+        }
+        var me = this;
+        me.stopper = 0;
+        me.time = setInterval(function() {
+            if (me.stopper >= 100) {
+              clearInterval(me.time);
+              me.nextSong();
+              $next.css("background", "");
+            } else {
+              me.stopper++;
+              $next.css("background", "linear-gradient(90deg, #BF55EC " + me.stopper + "%, #202020 " + me.stopper +"%)");
+            }
+          }, 100);
+      } 
+      function frame() {
+        if (width == 100) {
+          clearInterval(id);
+        } else {
+          width++; 
+          elem.style.width = width + '%'; 
+        }
+      }
     }
   },
 
@@ -70,7 +99,9 @@ window.YoutubePlayer = React.createClass({
   },
 
   nextSong: function(event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     this.jumpToSong(this.props.songNum + 1);
   },
 
@@ -105,7 +136,7 @@ window.YoutubePlayer = React.createClass({
 
   updateAndPlayVideo: function() {
     var vidID = this._song.videoIDs[this.state.vidIndex];
-    this.state.player.loadVideoById(vidID);
+    this._player.loadVideoById(vidID);
   },
 
   getInitialState: function() {
@@ -133,6 +164,20 @@ window.SessionCreator = React.createClass({
 
   componentDidMount: function() {
     this._fb = new Firebase("https://next-bake.firebaseio.com/karaoke");
+    $("#sessions button").on('click', function() {
+      //lol what is security
+      var $select = $("#sessions .sessionForm select");
+      var fb = new Firebase("https://next-bake.firebaseio.com/karaoke/"+$select.val()+"/password");
+      fb.once('value', function(snapshot){
+        var answer = snapshot.val().adminCode;
+        var code = prompt("Admin Code?");
+        if (answer != code) {
+          window.location.replace("./karaoke.html");
+        } else {
+          React.unmountComponentAtNode(document.getElementById('sessionCreator'));
+        }
+      })
+    })
   },
 
   startCreate: function() {
@@ -146,6 +191,7 @@ window.SessionCreator = React.createClass({
     var date = Date.now();
     var ID = me.state.displayName+date;
     ID = ID.replace(/\s+/g, '');
+    var adminCodePrompt = prompt("Enter an Admin Code for your event");
     newSession.set({
       date: date,
       ID: ID,
@@ -153,6 +199,7 @@ window.SessionCreator = React.createClass({
       group: this.state.group
     });
     this._fb.child(ID).child('queueStatus').set({songNum: -1});
+    this._fb.child(ID).child('password').set({adminCode: adminCodePrompt});
     this.setState({displayName: '', group: '', creating: false});
   },
 

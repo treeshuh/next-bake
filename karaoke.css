@@ -223,10 +223,6 @@ button:focus {
 		width: 100%;
 	}
 
-	.SongQueue tr td:nth-child(2) {
-		font-weight: 900;
-	}
-
 	.SongQueue tr td:last-child {
 		padding-bottom: 10px;
 	}

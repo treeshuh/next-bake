@@ -98,14 +98,14 @@ window.SongQueue = React.createClass({
  				playerNode = <window.YoutubePlayer songList={this.state.songList} fb={this.state.fbRef.child('queueStatus')} songNum={this.state.queueStatus.songNum}/>
  			} else {
  				playerNode = <div></div>
- 			}
-
- 			var submitNode = null;
- 			if (this.state.adding) {
-		      	submitNode = <SongSubmit fb={this.state.fbRef.child('songList')}/>
- 			} else {
- 				submitNode = <button onClick={this.addSong}>&#x2795; New Song</button>
- 			}
+ 				// no submit if there is a player. this is display only.
+ 				var submitNode = null;
+	 			if (this.state.adding) {
+			      	submitNode = <SongSubmit fb={this.state.fbRef.child('songList')}/>
+	 			} else {
+	 				submitNode = <button onClick={this.addSong}>&#x2795; New Song</button>
+	 			}
+	 		}
 	  		return (
 	  			<div>
 	  			<div className="SongQueueHolder">
@@ -186,15 +186,22 @@ window.SessionSelect = React.createClass({
 
 	handleSubmit: function(e) {
 		e.preventDefault();
+		if (this.props.lockInSession) {
+			this.setState({locked: true});
+		}
 		if (this.state.tempSessionID == null) {
 			var $select = $("#sessions .sessionForm select");
-			this.setState({tempSessionID: $select.val(), sessionID: $select.val()});
+			var readable = sanitize($select.children()[$select.index()].innerHTML);
+			this.setState({tempSessionID: $select.val(), sessionID: $select.val(), sessionReadable: readable});
 		} else{
 			this.setState({sessionID: this.state.tempSessionID});
 		}
 	},
 
 	render: function() {
+		if (this.state.locked) {
+			return (<h2>{this.state.sessionReadable}</h2>)
+		}
 		var me = this;
 		var sessionNodes = this.state.sessionList.map(function(newSession) {
 			var date = new Date(newSession.date);
@@ -229,6 +236,6 @@ window.SessionSelect = React.createClass({
 	},
 
 	getInitialState: function() {
-		return {sessionList: [], tempSessionID: null, sessionID: null};
+		return {sessionList: [], tempSessionID: null, sessionID: null, locked: false, sessionReadable: null};
 	}
 });

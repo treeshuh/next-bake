@@ -8,7 +8,7 @@ window.onYouTubeIframeAPIReady = function() {
 }
 
 ReactDOM.render(
-  <window.SessionSelect />, 
+  <window.SessionSelect lockInSession={true} />, 
   document.getElementById('sessions')
 );
 
