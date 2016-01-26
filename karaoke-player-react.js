@@ -26,12 +26,6 @@ window.YoutubePlayer = React.createClass({
     return true;
   },
 
-  componentDidUpdate: function(prevprop, prevstate) {
-    if (!this._song && this.props.songList.length > 0 && this._playerReady) {
-      this.jumpToSong(0);
-    }
-  },
-
   makePlayer: function() {
     var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     var scaledW = 0.70*w;
@@ -92,6 +86,9 @@ window.YoutubePlayer = React.createClass({
 
   onPlayerReady: function(event) {
     this._playerReady = true;
+    if (this.props.songNum >= 0) {
+      this.jumpToSong(this.props.songNum+1);
+    }
   },
 
   nextSong: function(event) {
