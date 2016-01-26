@@ -105,9 +105,10 @@ button:focus {
 #sessions, #songQ {
 	margin-left: auto;
 	margin-right: auto;
-	width: 80vw;
+	width: 65vw;
 	text-align: center;
 }
+
 .SongQueue {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -132,6 +133,10 @@ button:focus {
   /*  background: linear-gradient(to bottom right, #F399C1, #F8A46D); /* Standard syntax */
 }
 
+.SongQueue .active td {
+	font-weight: 900;
+}
+
 .SongQueue tr {
 	background-color: #202020;
 	margin: 10px;
@@ -142,10 +147,25 @@ button:focus {
 	width: 20vw;
 	padding: 10px;
 	margin-top: 10px;
+	font-weight: 300;
+}
+
+.SongQueue tr td:first-child {
+	width: 5vw;
+}
+
+.SongQueue tr td:nth-child(2) {
+	font-weight: 900;
 }
 
 .SongQueueHolder {
 	text-align: center;
+}
+
+.SongQueueHolder button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .SongQueue::-webkit-scrollbar {
@@ -166,3 +186,61 @@ button:focus {
 	border: 1px solid white;
 	padding-bottom: 20px;
 } 
+
+@media screen and (max-width: 750px) {
+	img {
+		width: 100px;
+	}
+
+	select {
+		display: block;
+		margin-bottom: 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#songQ {
+		margin: 0;
+		width: 100vw;
+	}
+
+	.SongQueue {
+		width: 100%;
+		overflow-x: hidden;
+	}
+
+	.SongQueue tr td{
+		display: block;
+		width: 100vw;
+		text-align: center;
+		line-height: 100%;
+		padding: 0;
+		padding-top: 2px;
+		padding-bottom: 2px;
+	}
+
+	.SongQueue tr td:first-child {
+		width: 100%;
+	}
+
+	.SongQueue tr td:nth-child(2) {
+		font-weight: 900;
+	}
+
+	.SongQueue tr td:last-child {
+		padding-bottom: 10px;
+	}
+
+	input[type="text"] {
+		width: 90vw;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 30px;
+	}
+
+	@keyframes inputText {
+	from {width: 0;}
+	to {width: 90vw;}
+}
+}
